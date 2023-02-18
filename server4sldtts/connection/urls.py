@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import *
+from .views import gTTs, download_file
 
 urlpatterns = [
     path('<language>/<text>/<filename>', gTTs),
