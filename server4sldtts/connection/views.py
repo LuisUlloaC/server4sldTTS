@@ -40,16 +40,21 @@ def gTTs(r, language='en', text='say it', filename=str(datetime.now)):
 def download_file(request, filename):
     try:
         audio = Audio.objects.get(file_name=filename)
-        """ print(temp_path)
+        return FileResponse(open( temp_path + '/' + str(audio) ,  'rb') )
+    except Audio.DoesNotExist:
+        return HTTP_404_NOT_FOUND
+    
+    
+def b64(request , filename):
+    try:
+        audio = Audio.objects.get(file_name=filename)
+        print(temp_path)
         print(audio)
         with open(temp_path + '/' + str(audio), 'rb') as bin_file:
             bin_data = bin_file.read()
             b64_encode = base64.b64encode(bin_data)
             print(str(HttpResponse(b64_encode)))
         return HttpResponse(b64_encode)
-        """
-        return FileResponse(open( temp_path + '/' + str(audio) ,  'rb') )
     except Audio.DoesNotExist:
         return HTTP_404_NOT_FOUND
-
 
