@@ -47,7 +47,7 @@ def download_file(request, filename):
     
 def b64(request , filename):
     try:
-        audio = Audio.objects.get(file_name=filename)
+        audio = Audio.objects.get(file_name=filename + ".mp3")
         print(temp_path)
         print(audio)
         with open(temp_path + '/' + str(audio), 'rb') as bin_file:
